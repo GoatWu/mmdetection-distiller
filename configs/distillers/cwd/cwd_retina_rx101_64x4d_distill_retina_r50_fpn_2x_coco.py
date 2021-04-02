@@ -8,21 +8,23 @@ weight=5.0
 tau=1.0
 distiller = dict(
     type='DetectionDistiller',
-    teacher_pretrained = 'pretrained_model/retinanet_x101_64x4d_fpn_1x_coco_20200130-366f5af1.pth',
-    distill_cfg = [ dict(student_module = 'neck.fpn_convs.3.conv',
-                         teacher_module = 'neck.fpn_convs.3.conv',
-                         output_hook = True,
-                         methods=[dict(type='ChannelWiseDivergence',
-                                       name='loss_cw_fpn_3',
-                                       student_channels = 256,
-                                       teacher_channels = 256,
-                                       tau = tau,
-                                       weight =weight,
-                                       )
-                                ]
-                        ),
+#     teacher_pretrained = 'pretrained_model/retinanet_x101_64x4d_fpn_1x_coco_20200130-366f5af1111.pth',
+    teacher_pretrained = None,
+    distill_cfg = [ 
+#                     dict(student_module = 'neck.fpn_convs.3.conv',
+#                          teacher_module = 'neck.fpn_convs.3.conv',
+#                          output_hook = True,
+#                          methods=[dict(type='ChannelWiseDivergence',
+#                                        name='loss_cw_fpn_3',
+#                                        student_channels = 256,
+#                                        teacher_channels = 256,
+#                                        tau = tau,
+#                                        weight =weight,
+#                                        )
+#                                 ]
+#                         ),
                     dict(student_module = 'neck.fpn_convs.2.conv',
-                         teacher_module = 'neck.fpn_convs.2.conv',
+                         teacher_module = 'neck.fpn_convs.3.conv',
                          output_hook = True,
 
                          methods=[dict(type='ChannelWiseDivergence',
@@ -35,7 +37,7 @@ distiller = dict(
                                 ]
                         ),
                     dict(student_module = 'neck.fpn_convs.1.conv',
-                         teacher_module = 'neck.fpn_convs.1.conv',
+                         teacher_module = 'neck.fpn_convs.2.conv',
                          output_hook = True,
 
                          methods=[dict(type='ChannelWiseDivergence',
@@ -48,7 +50,7 @@ distiller = dict(
                                 ]
                         ),
                     dict(student_module = 'neck.fpn_convs.0.conv',
-                         teacher_module = 'neck.fpn_convs.0.conv',
+                         teacher_module = 'neck.fpn_convs.1.conv',
                          output_hook = True,
 
                          methods=[dict(type='ChannelWiseDivergence',

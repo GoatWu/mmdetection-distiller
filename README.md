@@ -2,6 +2,8 @@
 
 This project is based on mmdetection(v-2.9.0), all the usage is the same as [mmdetection](https://mmdetection.readthedocs.io/en/latest/) including training , test and so on.
 
+In this project, the teacher model is removed. A Self-Knowledge Distillation model is built.
+
 # Distiller Zoo
 
 
